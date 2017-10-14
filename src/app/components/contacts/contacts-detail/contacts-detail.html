@@ -1,0 +1,96 @@
+<section>
+	<style>
+		.icon {
+			font-size: 80%;
+		}
+	</style>
+
+	<h1><span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
+		{{$ctrl.contact.firstName}}&nbsp;{{$ctrl.contact.lastName}}
+	</h1>
+
+	<hr/>
+
+	<form class="form" ng-submit="$ctrl.onSubmit()">
+
+		<div class="form-row">
+			<div class="col col-lg-4 col-sm-12">
+				<div class="form-group">
+					<label for="company">Company</label>
+					<input type="text" class="form-control" id="company" name="company" ng-model="$ctrl.contact.company">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col col-lg-4 col-12">
+				<div class="form-group">
+					<label for="lastname">Lastname</label>
+					<input type="text" class="form-control" id="lastname" name="lastname" ng-model="$ctrl.contact.lastName">
+				</div>
+			</div>
+			<div class="col-lg-4 col-12">
+				<div class="form-group">
+					<label for="firstname">Firstname</label>
+					<input type="text" class="form-control" id="firstname" name="firstname" ng-model="$ctrl.contact.firstName">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-lg-4 col-sm-12">
+				<div class="form-group">
+					<label for="street">Street</label>
+					<input type="text" class="form-control" id="street" name="street" ng-model="$ctrl.contact.street">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-lg-4 col-sm-12 col-12">
+				<div class="form-group">
+					<label for="city">City</label>
+					<input type="text" class="form-control" id="city" name="city" ng-model="$ctrl.contact.city">
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-12">
+				<div class="form-group">
+					<label for="state">State</label>
+					<select class="form-control" id="state" name="state" ng-model="$ctrl.contact.state">
+						<option ng-repeat="state in $ctrl.states" value="{{state.abbreviation}}">{{state.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-lg-4 col-12">
+				<div class="form-group">
+					<label for="zip">Zip</label>
+					<input type="text" class="form-control" id="zip" name="state" ng-model="$ctrl.contact.zip">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-lg-4 col-12">
+				<div class="form-group">
+					<label for="phone">Phone</label>
+					<input type="tel" class="form-control" id="phone" name="phone" ng-model="$ctrl.contact.phone">
+				</div>
+			</div>
+			<div class="col-lg-4 col-12">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email" ng-model="$ctrl.contact.email">
+				</div>
+			</div>
+		</div>
+
+		<hr/>
+
+		<button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+		<button class="btn btn-primary" type="submit">Save</button>
+	</form>
+</section>

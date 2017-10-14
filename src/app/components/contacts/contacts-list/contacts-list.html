@@ -1,0 +1,34 @@
+<section class="contacts">
+
+	<h1><span class="glyphicon glyphicon-list icon" aria-hidden="true"></span>
+		Contacts
+	</h1>
+
+	<hr/>
+
+	<table class="table table-sm table-responsive">
+		<thead class="table-light">
+		<tr>
+			<th>Lastname</th>
+			<th>Firstname</th>
+			<th>Company</th>
+			<th>Street</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="contact in $ctrl.contacts">
+			<td><a ui-sref="contacts.detail({contactId: contact.id})">{{contact.lastName}}</a></td>
+			<td>{{contact.firstName}}</td>
+			<td>{{contact.company}}</td>
+			<td>{{contact.street}}</td>
+			<td>{{contact.city}}</td>
+			<td>{{contact.state}}</td>
+			<td>{{contact.zip}}</td>
+		</tr>
+		</tbody>
+	</table>
+
+</section>
