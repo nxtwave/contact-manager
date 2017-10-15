@@ -3,7 +3,8 @@
 
   angular
     .module('common', [
-      'common.layout'
+      'common.layout',
+      'common.services'
     ]);
 
 })();

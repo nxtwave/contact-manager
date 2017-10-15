@@ -20,7 +20,7 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="contact in $ctrl.contacts">
-			<td><a ui-sref="contacts.detail({contactId: contact.id})">{{contact.lastName}}</a></td>
+			<td><a ui-sref="contacts.detail({contactId: contact._id})">{{contact.lastName}}</a></td>
 			<td>{{contact.firstName}}</td>
 			<td>{{contact.company}}</td>
 			<td>{{contact.street}}</td>

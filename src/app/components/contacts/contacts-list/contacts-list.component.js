@@ -5,14 +5,10 @@
     .module('components.contacts')
     .component('contacts.list', {
       templateUrl: './contacts-list.html',
-      controller: ContactsListController,
-      bindings: {
-        contacts: '<'
-      }
+      controller: ContactsListController
     }).config(Config);
 
   Config.$inject = ['$stateProvider'];
-
   function Config($stateProvider) {
     $stateProvider
       .state({
@@ -22,18 +18,19 @@
       });
   }
 
-  ContactsListController.$inject = ['ContactsService'];
-
-  function ContactsListController(ContactsService) {
+  ContactsListController.$inject = ['Dataservice'];
+  function ContactsListController(Dataservice) {
     var $ctrl = this;
 
+    // the list of contacts:
+    $ctrl.contacts = undefined;
+
     $ctrl.$onInit = function() {
-      ContactsService.getContacts().then(function(contacts) {
-        $ctrl.contacts = contacts;
+      Dataservice.getContacts().then(function(contacts) {
+        $ctrl.contacts = contacts.data;
       });
     };
 
   }
-
 
 })();

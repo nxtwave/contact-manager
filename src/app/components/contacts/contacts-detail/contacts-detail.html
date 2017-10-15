@@ -3,6 +3,10 @@
 		.icon {
 			font-size: 80%;
 		}
+		.has-danger {
+			color: red !important;
+		}
+
 	</style>
 
 	<h1><span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
@@ -11,28 +15,61 @@
 
 	<hr/>
 
-	<form class="form" ng-submit="$ctrl.onSubmit()">
+	<form class="form" name="contactForm" ng-submit="$ctrl.onSubmit()" novalidate>
 
 		<div class="form-row">
 			<div class="col col-lg-4 col-sm-12">
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-danger': contactForm.company.$touched && contactForm.company.$invalid}">
 					<label for="company">Company</label>
-					<input type="text" class="form-control" id="company" name="company" ng-model="$ctrl.contact.company">
+					<input type="text" class="form-control" id="company" name="company"
+						ng-model="$ctrl.contact.company"
+						ng-minlength="4"
+						ng-maxlength="50"
+						required>
+
+					<div class="help-block" ng-messages="contactForm.company.$error" ng-if="contactForm.company.$touched">
+						<p ng-message="minlength">Company name is too short</p>
+						<p ng-message="maxlength">Company name is too long</p>
+						<p ng-message="required">Company name is required</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="col col-lg-4 col-12">
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-danger': contactForm.lastname.$touched && contactForm.lastname.$invalid}">
 					<label for="lastname">Lastname</label>
-					<input type="text" class="form-control" id="lastname" name="lastname" ng-model="$ctrl.contact.lastName">
+					<input type="text" class="form-control" id="lastname" name="lastname"
+						ng-model="$ctrl.contact.lastName"
+						ng-minlength="4"
+						ng-maxlength="25"
+						required>
+
+					<div class="help-block" ng-messages="contactForm.lastname.$error" ng-if="contactForm.lastname.$touched">
+						<p ng-message="minlength">Lastname is too short</p>
+						<p ng-message="maxlength">Lastname is too long</p>
+						<p ng-message="required">Lastname is required</p>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-4 col-12">
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-danger': contactForm.firstname.$touched && contactForm.firstname.$invalid}">
 					<label for="firstname">Firstname</label>
-					<input type="text" class="form-control" id="firstname" name="firstname" ng-model="$ctrl.contact.firstName">
+					<input type="text" class="form-control" id="firstname" name="firstname"
+						ng-model="$ctrl.contact.firstName"
+						ng-minlength="5"
+						ng-maxlength="25"
+						required>
+
+					<div class="help-block" ng-messages="contactForm.firstname.$error" ng-if="contactForm.firstname.$touched">
+						<p ng-message="minlength">Firstname is too short</p>
+						<p ng-message="maxlength">Firstname is too long</p>
+						<p ng-message="required">Firstname is required</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -80,10 +117,17 @@
 					<input type="tel" class="form-control" id="phone" name="phone" ng-model="$ctrl.contact.phone">
 				</div>
 			</div>
+
 			<div class="col-lg-4 col-12">
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-danger': contactForm.email.$touched && contactForm.email.$invalid}">
 					<label for="email">Email</label>
-					<input type="email" class="form-control" id="email" name="email" ng-model="$ctrl.contact.email">
+					<input type="email" class="form-control" id="email" name="email" ng-model="$ctrl.contact.email" required>
+
+					<div class="help-block" ng-messages="contactForm.email.$error" ng-if="contactForm.email.$touched">
+						<p ng-message="email">Email is not formatted correct</p>
+						<p ng-message="required">Email is required</p>
+					</div>
+
 				</div>
 			</div>
 		</div>

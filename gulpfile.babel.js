@@ -16,19 +16,18 @@ var child = require('child_process');
 const exec = child.exec;
 const argv = yargs.argv;
 const root = 'src/';
+
 const paths = {
-  dist: './dist/',
-  distDocs: './docs/build',
-  docs: './docs/app/*.js',
+  dist: './public/',
   scripts: [root + '/app/**/*.js', root + '/app/**/*.spec.js'],
-  tests: root + '/app/**/*.spec.js',
   styles: [`${root}/sass/*.scss`, 'node_modules/bootstrap/dist/css/bootstrap.css'],
   fonts: 'node_modules/bootstrap/dist/fonts/*',
   templates: root + '/app/**/*.html',
   modules: [
     'angular/angular.js',
     'angular-ui-router/release/angular-ui-router.js',
-    'angular-loading-bar/build/loading-bar.min.js'
+    'angular-loading-bar/build/loading-bar.min.js',
+    'angular-messages/angular-messages.min.js'
   ],
   static: [
     root + '/index.html',
@@ -90,13 +89,20 @@ gulp.task('scripts', ['modules'], () => {
   .pipe(gulp.dest(paths.dist + 'js/'));
 });
 
-gulp.task('serve', function() {
+gulp.task('xserve', function() {
   return server.init({
     files: [paths.dist + '/**'],
     port: 4000,
     server: {
       baseDir: paths.dist
     }
+  });
+});
+
+gulp.task('serve', () => {
+  return server.init({
+    files: [`${paths.dist}/**`],
+    proxy: 'localhost:3000'
   });
 });
 
