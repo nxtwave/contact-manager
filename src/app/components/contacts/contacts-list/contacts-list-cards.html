@@ -1,0 +1,29 @@
+<style>
+	.card-body p {
+		margin: 0;
+	}
+</style>
+
+<section class="contacts">
+
+	<h1><span class="glyphicon glyphicon-list icon" aria-hidden="true"></span>
+		Contacts
+	</h1>
+
+	<hr/>
+
+	<div class="card-columns">
+		<div class="card border-info mb-3" style="width: 20rem; margin-bottom: 1rem;" ng-repeat="contact in $ctrl.contacts">
+			<h6 class="card-header">{{contact.firstName}} {{contact.lastName}}</h6>
+			<div class="card-body">
+				<p class="card-text">{{contact.company}}</p>
+				<p class="card-text">{{contact.street}}</p>
+				<p class="card-text">{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
+			</div>
+			<div class="card-footer bg-transparent">
+				<a ui-sref="contacts.detail({contactId: contact._id})" class="btn btn-primary btn-sm">Edit</a>
+			</div>
+		</div>
+	</div>
+
+</section>
