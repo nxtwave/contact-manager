@@ -5,6 +5,7 @@
     .module('components', [
       'components.home',
       'components.contacts',
+      'components.reports',
       'components.about'
     ]);
 

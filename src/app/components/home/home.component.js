@@ -13,7 +13,7 @@
   function Config($stateProvider) {
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/reports-home',
         component: 'home'
       });
   }

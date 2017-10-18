@@ -9,7 +9,6 @@
     }).config(Config);
 
   Config.$inject = ['$stateProvider'];
-
   function Config($stateProvider) {
     $stateProvider
       .state({

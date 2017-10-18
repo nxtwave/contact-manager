@@ -4,7 +4,7 @@
   angular
     .module('components.contacts')
     .component('contacts.list', {
-      templateUrl: './contacts-list.html',
+      templateUrl: './contacts-list-cards.html',
       controller: ContactsListController
     }).config(Config);
 
