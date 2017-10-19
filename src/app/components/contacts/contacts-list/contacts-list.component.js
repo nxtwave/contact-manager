@@ -18,18 +18,26 @@
       });
   }
 
-  ContactsListController.$inject = ['Dataservice'];
-  function ContactsListController(Dataservice) {
+  ContactsListController.$inject = ['$rootScope', 'Dataservice'];
+  function ContactsListController($rootScope, Dataservice) {
     var $ctrl = this;
 
     // the list of contacts:
     $ctrl.contacts = undefined;
+
+    $ctrl.searchTerm = undefined;
+
+    $rootScope.$on('SEARCH_EVENT', function(event, data) {
+      console.log('search', data.searchTerm);
+      $ctrl.searchTerm = data.searchTerm
+    });
 
     $ctrl.$onInit = function() {
       Dataservice.getContacts().then(function(contacts) {
         $ctrl.contacts = contacts.data;
       });
     };
+
 
   }
 

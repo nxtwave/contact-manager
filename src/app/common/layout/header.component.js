@@ -8,8 +8,17 @@
       controller: HeaderController
     });
 
-  function HeaderController() {
+  HeaderController.$inject = ['$rootScope'];
+
+  function HeaderController($rootScope) {
     var $ctrl = this;
+
+    $ctrl.searchTerm = undefined;
+
+    $ctrl.onSearch = function(searchTerm) {
+      $rootScope.$broadcast('SEARCH_EVENT', {searchTerm: searchTerm});
+    };
+
   }
 
 })();
