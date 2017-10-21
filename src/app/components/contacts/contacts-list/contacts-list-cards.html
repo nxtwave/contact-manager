@@ -1,4 +1,8 @@
 <style>
+	.card {
+		width: 20rem;
+		margin-bottom: 1rem;
+	}
 	.card-body p {
 		margin: 0;
 	}
@@ -13,7 +17,7 @@
 	<hr/>
 
 	<div class="card-columns">
-		<div class="card border-info mb-3" style="width: 20rem; margin-bottom: 1rem;" ng-repeat="contact in $ctrl.contacts">
+		<div class="card border-info mb-3" ng-repeat="contact in $ctrl.contacts | filter: {lastName: $ctrl.searchTerm} track by $index | limitTo:5">
 			<h6 class="card-header">{{contact.firstName}} {{contact.lastName}}</h6>
 			<div class="card-body">
 				<p class="card-text">{{contact.company}}</p>
